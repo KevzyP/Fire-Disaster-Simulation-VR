@@ -11610,7 +11610,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 08f35ac0e08894b438cccd7a41fad9c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10502d6f1740261489f045902cb65aad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12477,6 +12477,7 @@ MonoBehaviour:
   indexText: {fileID: 1844776141}
   currentIndex: 3
   imageListEvacSim:
-  - {fileID: 21300000, guid: 51793760363a38240ae2858d275059f2, type: 3}
+  - {fileID: 21300000, guid: ccd2d5f65c456db4c8ee844376a1b197, type: 3}
+  - {fileID: 21300000, guid: 628238cc32292a949add4ac9fac9cc3c, type: 3}
   imageListExtSim:
-  - {fileID: 21300000, guid: af9b23e6e2834074e90648945362b609, type: 3}
+  - {fileID: 21300000, guid: 282e0fad280be4b41a4506c4ebef46f3, type: 3}
