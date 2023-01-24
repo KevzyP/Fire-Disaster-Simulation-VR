@@ -19,7 +19,6 @@ public class ExitSimulationController : MonoBehaviour
 
     public void ExitToFreeRoam()
     {
-        gameManager.tutFinished = false;
         gameManager.State = GameState.FreeRoamMode;
         gameManager.ChangeScene(gameManager.s_FreeRoam);
     }

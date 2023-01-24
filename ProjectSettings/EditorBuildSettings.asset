@@ -6,22 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/_Scenes/MainMenu.unity
     guid: 712b23d1d04220d4bba0a2cdefcd211e
   - enabled: 0
-    path: Assets/Scenes/MainHub.unity
+    path: Assets/_Scenes/MainHub.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/FreeRoam.unity
+    path: Assets/_Scenes/FreeRoam.unity
     guid: 9b5aa6428ba7a6246bd201ba8d95cebe
   - enabled: 1
-    path: Assets/Scenes/PrepRoom.unity
+    path: Assets/_Scenes/PrepRoom.unity
     guid: be7abdacca16bd74789349c9e7ea670d
   - enabled: 1
-    path: Assets/Scenes/EvacuationRoom.unity
+    path: Assets/_Scenes/EvacuationRoom.unity
     guid: f5201dfe015e76142ba282ed55813b90
   - enabled: 1
-    path: Assets/Scenes/FireExSimulation.unity
+    path: Assets/_Scenes/FireExSimulation.unity
     guid: 29a944d770f2ee543abcb52d6d450520
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 223889a0d2361364b857772648bcede7, type: 2}

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - FireObjective
+  - EvacObjective
+  - Fire
   layers:
   - Default
   - TransparentFX

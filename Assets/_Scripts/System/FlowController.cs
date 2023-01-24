@@ -26,9 +26,15 @@ public class FlowController : MonoBehaviour
 
     public IEnumerator FlowSequenceFireEx()
     {
+        TutorialPanelController tutorialPanelController = FindObjectOfType<TutorialPanelController>();
         FireController fireController = FindObjectOfType<FireController>();
 
-        yield return new WaitUntil(() => gameManager.tutFinished == true);
+        if (gameManager.tutFinishedEx)
+        {
+            tutorialPanelController.CloseTutorial();
+        }
+
+        yield return new WaitUntil(() => gameManager.tutFinishedEx == true);
 
         SetupFireEx();
         Objective fireObjective = objectiveController.objectiveList.Find((x) => x.CompareTag("FireObjective"));
@@ -44,6 +50,25 @@ public class FlowController : MonoBehaviour
 
     public IEnumerator FlowSequenceEvac()
     {
+        TutorialPanelController tutorialPanelController = FindObjectOfType<TutorialPanelController>();
+        FireController fireController = FindObjectOfType<FireController>();
+
+        if (gameManager.tutFinishedEvac)
+        {
+            tutorialPanelController.CloseTutorial();
+        }
+
+        yield return new WaitUntil(() => gameManager.tutFinishedEvac == true);
+
+        SetupFireEvac();
+
+        Objective evacObjective = objectiveController.objectiveList.Find((x) => x.CompareTag("EvacObjective") && !x.GetComponent<Objective>().objectiveFinished);
+
+        yield return new WaitUntil(() => evacObjective.objectiveFinished);
+
+        objectiveController.CheckForCompletion();
+        objectiveController.AddEvacObjective();
+
         yield return null;
     }
 
@@ -59,6 +84,21 @@ public class FlowController : MonoBehaviour
         
         fireController.ActivateFires();
         objectiveController.AddFiresObjective();
+
+    }
+
+    public void SetupFireEvac()
+    {
+        Debug.Log("Running SetupFireEvac Method");
+        FireController fireController = FindObjectOfType<FireController>();
+
+        if (objectiveController == null)
+        {
+            objectiveController = FindObjectOfType<ObjectiveController>();
+        }
+
+        fireController.ActivateFires();
+        objectiveController.AddEvacObjective();
 
     }
 }

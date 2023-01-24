@@ -13,7 +13,10 @@ public class GameManager : MonoBehaviour
     public static event UnityAction<GameState> OnGameStateChanged;
 
     public int currentScenario;
-    public bool tutFinished = false;
+
+    public bool tutFinishedFreeRoam = false;
+    public bool tutFinishedEvac = false;
+    public bool tutFinishedEx = false;
 
     public string s_FreeRoam = "FreeRoam";
     public string s_PrepRoom = "PrepRoom";

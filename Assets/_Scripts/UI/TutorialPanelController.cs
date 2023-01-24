@@ -58,7 +58,19 @@ public class TutorialPanelController : MonoBehaviour
 
     public void CloseTutorial()
     {
-        gameManager.tutFinished = true;
+        switch (gameManager.State)
+        {
+            case GameState.FreeRoamMode:
+                gameManager.tutFinishedFreeRoam = true;
+                break;
+            case GameState.ExMode:
+                gameManager.tutFinishedEx = true;
+                break;
+            case GameState.EvacMode:
+                gameManager.tutFinishedEvac = true;
+                break;
+        }
+
         EnableLocomotion();
         DisableTutPanel();
     }

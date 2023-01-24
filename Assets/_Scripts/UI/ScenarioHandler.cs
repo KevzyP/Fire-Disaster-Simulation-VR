@@ -22,7 +22,6 @@ public class ScenarioHandler : MonoBehaviour
     {
         gameManager.currentScenario = scenarioNumber;
         gameManager.UpdateGameState(GameState.PrepRoomMode);
-        gameManager.tutFinished = false;
         gameManager.ChangeScene(gameManager.s_PrepRoom);
     }
 
@@ -31,7 +30,7 @@ public class ScenarioHandler : MonoBehaviour
         Debug.Log("Toggling scenario window");
         if (!isWindowOpen && !isRunning)
         {
-            if(gameManager.tutFinished == true)
+            if(gameManager.tutFinishedFreeRoam == true)
                 StartCoroutine(ShowScenarioWindow());
         }
         else if (isWindowOpen && !isRunning)

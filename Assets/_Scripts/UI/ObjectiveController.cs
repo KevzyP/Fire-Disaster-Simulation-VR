@@ -8,14 +8,19 @@ public class ObjectiveController : MonoBehaviour
     [SerializeField] private Objective objectivePrefab;
     [SerializeField] private Transform objectiveParent;
     [SerializeField] public List<Objective> objectiveList;
+    [TextArea (5, 10)]
+    public List<string> fireEvacTexts;
 
     private string firesRemainingText;
     private int firesRemainingNumber;
+    private int fireEvacTextsIndex;
 
     private void Start()
     {
         firesRemainingText = "Fires Extinguished: ";
         firesRemainingNumber = 0;
+
+        fireEvacTextsIndex = 0;
     }
 
     public void AddFiresObjective()
@@ -33,6 +38,18 @@ public class ObjectiveController : MonoBehaviour
         newPrefab.ChangeText(newText);
         objectiveList.Add(newPrefab);
     }
+
+    public void AddEvacObjective()
+    {
+        var newPrefab = Instantiate(objectivePrefab, objectiveParent);
+
+        newPrefab.tag = "EvacObjective";
+        newPrefab.ChangeText(fireEvacTexts[fireEvacTextsIndex]);
+        objectiveList.Add(newPrefab);
+
+        fireEvacTextsIndex++;
+    }
+
 
     public IEnumerator AddReturnToFreeRoamObjective()
     {
@@ -65,6 +82,4 @@ public class ObjectiveController : MonoBehaviour
             }
         }
     }
-
-    
 }

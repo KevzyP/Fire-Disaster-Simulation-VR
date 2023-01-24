@@ -33,7 +33,7 @@ public class Fires : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player is entering fire");
+            other.gameObject.GetComponent<PlayerController>().TakeDamage();
         }
     }
 
