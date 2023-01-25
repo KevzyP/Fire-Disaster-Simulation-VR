@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private int health;
+    [SerializeField] private int health = 2;
     [SerializeField] private float hitDelayTime;
     public CanvasGroup blindfoldCanvasGroup;
 

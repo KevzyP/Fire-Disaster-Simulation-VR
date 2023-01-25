@@ -2877,6 +2877,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1973820598025926254, guid: 136152aa280825d4cba04f5632ce9a78, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.932
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973820598025926254, guid: 136152aa280825d4cba04f5632ce9a78, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973820598025926254, guid: 136152aa280825d4cba04f5632ce9a78, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.989
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973820598025926254, guid: 136152aa280825d4cba04f5632ce9a78, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973820598025926254, guid: 136152aa280825d4cba04f5632ce9a78, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973820598025926254, guid: 136152aa280825d4cba04f5632ce9a78, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973820598025926254, guid: 136152aa280825d4cba04f5632ce9a78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 3588674847771863144, guid: 136152aa280825d4cba04f5632ce9a78, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4484,11 +4512,11 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _CamFarPlaneDist: 1000
+    - _CamFarPlaneDist: 3535.534
     - _CellSizeX: 1
     - _CellSizeZ: 1
     m_Colors:
-    - _CamWorldPos: {r: 0.90138113, g: 2.2398667, b: -6.049188, a: 0}
+    - _CamWorldPos: {r: -0.4020872, g: 0.20125851, b: -4.1115603, a: 0}
     - _CellOffset: {r: 0, g: 0, b: 0, a: 0}
     - _LineColor: {r: 0, g: 0, b: 0, a: 1}
     - _PlaneColor: {r: 1, g: 1, b: 1, a: 0}

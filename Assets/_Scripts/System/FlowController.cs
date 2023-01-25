@@ -15,6 +15,9 @@ public class FlowController : MonoBehaviour
 
         switch (gameManager.State)
         {
+            case GameState.FreeRoamMode:
+                StartCoroutine(FlowSequenceFreeRoam());
+                break;
             case GameState.EvacMode:
                 StartCoroutine(FlowSequenceEvac());
                 break;
@@ -22,6 +25,18 @@ public class FlowController : MonoBehaviour
                 StartCoroutine(FlowSequenceFireEx());
                 break;
         }
+    }
+
+    public IEnumerator FlowSequenceFreeRoam()
+    {
+        TutorialPanelController tutorialPanelController = FindObjectOfType<TutorialPanelController>();
+
+        if (gameManager.tutFinishedEx)
+        {
+            tutorialPanelController.CloseTutorial();
+        }
+
+        yield return null;
     }
 
     public IEnumerator FlowSequenceFireEx()
