@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    [HideInInspector] public GameManager gameManager;
-
+    private GameManager gameManager;
+    private PlayerPrefsHandler prefsHandler;
 
     public void StartGame()
     {
+        PlayerPrefsHandler.LoadData(gameManager);
         gameManager.State = GameState.FreeRoamMode;
         gameManager.ChangeScene(gameManager.s_FreeRoam);
     }
@@ -23,5 +24,6 @@ public class MainMenuController : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.Instance;
+        prefsHandler = PlayerPrefsHandler.Instance;
     }
 }
