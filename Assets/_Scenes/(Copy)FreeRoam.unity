@@ -8837,7 +8837,9 @@ Transform:
   m_LocalPosition: {x: -1.946, y: 2.6721387, z: 3.7053626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1680139796}
+  - {fileID: 1445524871}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10494,13 +10496,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445524869}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.937, y: 2.388, z: 3.82}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.008999944, y: -0.28413868, z: 0.114637375}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 1285246312}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1448037585 stripped
 Transform:
@@ -12107,13 +12109,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680139794}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 9.467, y: 2.476, z: -4.856}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 11.413, y: -0.19613862, z: -8.561362}
   m_LocalScale: {x: 0.06, y: 0.06, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1285246312}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &1691823343
 PrefabInstance:
@@ -12385,7 +12387,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 1
   currentScenario: 0
-  tutFinished: 0
+  tutFinishedFreeRoam: 0
+  tutFinishedEvac: 0
+  tutFinishedEx: 0
   s_FreeRoam: FreeRoam
   s_PrepRoom: PrepRoom
   s_EvacScene: EvacuationRoom
