@@ -8,9 +8,10 @@ public class WhiteboardController : MonoBehaviour
 {
     [SerializeField] private GameObject imageSlot;
     [SerializeField] private TextMeshProUGUI indexText;
-    [SerializeField] private int currentIndex = 0;
     [SerializeField] private List<Sprite> imageListEvacSim;
     [SerializeField] private List<Sprite> imageListExtSim;
+    
+    private int currentIndex = 0;
     private GameManager gameManager;
 
     public void PreviousImage()

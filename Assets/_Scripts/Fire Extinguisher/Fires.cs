@@ -9,6 +9,7 @@ public class Fires : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float fireIntensity;
 
     private FireController fireController;
+    private AudioSource audioSource;
     private float[] currentEmission;
     public bool isExtinguished = false;
 
@@ -20,6 +21,7 @@ public class Fires : MonoBehaviour
     void Start()
     {
         fireController = FindObjectOfType<FireController>();
+        audioSource = gameObject.GetComponent<AudioSource>();
 
         currentEmission = new float[fireParticles.Count];
 
@@ -65,7 +67,37 @@ public class Fires : MonoBehaviour
         if (isExtinguished)
         {
             fireController.UpdateFireStatus();
+            StartCoroutine(FadeOutSound());
         }
+    }
+
+    public void RandomizeSoundPitchAndPlaySound()
+    {
+        float randomPitchModifier = 0f;
+        float audioPitch = 1f;
+
+        randomPitchModifier = Random.Range(-0.5f, 0.5f);
+        audioSource.pitch = (audioPitch + randomPitchModifier);
+        audioSource.Play();
+    }
+    IEnumerator FadeOutSound()
+    {
+        float currentTime = 0f;
+        float duration = 1.5f;
+        float start = audioSource.volume;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, 0, currentTime / duration);
+            yield return null;
+        }
+        
+        if (audioSource.volume == 0)
+        {
+            audioSource.Stop();
+        }
+
+        yield break;
     }
 
     public enum FireTypes

@@ -29,10 +29,13 @@ public class FlowController : MonoBehaviour
 
     public IEnumerator FlowSequenceFreeRoam()
     {
+        Debug.Log("Begin FreeRoam Flow Sequence");
         TutorialPanelController tutorialPanelController = FindObjectOfType<TutorialPanelController>();
 
-        if (gameManager.tutFinishedEx)
+        Debug.Log("Is this tutorial been read?\n" + gameManager.tutFinishedEx);
+        if (gameManager.tutFinishedFreeRoam)
         {
+            Debug.Log("Closing tutorial as it's been read before.");
             tutorialPanelController.CloseTutorial();
         }
 

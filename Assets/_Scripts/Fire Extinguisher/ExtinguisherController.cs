@@ -8,17 +8,21 @@ using System;
 public class ExtinguisherController : MonoBehaviour
 {
     private XRGrabInteractable grabInteractable;
+    private AudioSource audioSource;
     private bool isSpraying = false;
     private Vector3 OGPosition;
     private Quaternion OGRotation;
+    private bool soundOn = false;
 
     [SerializeField] private ExTypes exTypes;
-
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private float increaseRate = 0;
+    [SerializeField] private AudioClip startSpraySound;
+    [SerializeField] private AudioClip loopSpraySound;
 
     private void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         OGPosition = gameObject.GetComponent<Transform>().position;
         OGRotation = gameObject.GetComponent<Transform>().rotation;
     }
@@ -105,6 +109,12 @@ public class ExtinguisherController : MonoBehaviour
 
     private void ResetSpray(SelectExitEventArgs arg0)
     {
+        soundOn = false;
+        if (audioSource.isPlaying)
+        {
+            StartCoroutine(FadeOutSound());
+        }
+
         gameObject.GetComponent<BoxCollider>().enabled = true;
 
         Debug.Log("stopping everything");
@@ -116,6 +126,12 @@ public class ExtinguisherController : MonoBehaviour
 
     private IEnumerator DecreaseSprayRate()
     {
+        soundOn = false;
+        if (audioSource.isPlaying)
+        {
+
+            StartCoroutine(FadeOutSound());
+        }
         isSpraying = false;
 
         var emissionRate = particleSystem.emission;
@@ -126,6 +142,8 @@ public class ExtinguisherController : MonoBehaviour
 
     public IEnumerator IncreaseSprayRate()
     {
+        StartCoroutine(PlaySpraySound());
+
         isSpraying = true;
 
         var emissionRate = particleSystem.emission;
@@ -162,6 +180,50 @@ public class ExtinguisherController : MonoBehaviour
         
     }
 
+    IEnumerator PlaySpraySound()
+    {
+        soundOn = true;
+
+        if (audioSource.isPlaying)
+            audioSource.Stop();
+        
+        audioSource.volume = 1;
+
+        audioSource.clip = startSpraySound;
+        audioSource.loop = false;
+        audioSource.Play();
+
+        yield return new WaitWhile(() => audioSource.isPlaying);
+
+        audioSource.clip = loopSpraySound;
+        audioSource.loop = true;
+        audioSource.Play();
+
+        yield return null;
+    }
+
+    IEnumerator FadeOutSound()
+    {
+        float currentTime = 0f;
+        float duration = 0.5f;
+        float start = audioSource.volume;
+        while (currentTime < duration)
+        {
+            if (soundOn)
+                break;
+
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, 0, currentTime / duration);
+            yield return null;
+        }
+
+        if (audioSource.volume == 0)
+        {
+            audioSource.Stop();
+        }
+
+        yield break;
+    }
     public enum ExTypes
     {
         Water,

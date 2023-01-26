@@ -66,6 +66,24 @@ public class GameManager : MonoBehaviour
 
         OnGameStateChanged?.Invoke(newState);
     }
+
+    public void SaveData()
+    {
+        SaveSystem.SaveData(this);
+    }
+
+    public void LoadData()
+    {
+        SavedData data = SaveSystem.LoadData();
+
+        if (data != null)
+        {
+            tutFinishedFreeRoam = data.tutFinishedFreeRoam;
+            tutFinishedEx = data.tutFinishedEx;
+            tutFinishedFreeRoam = data.tutFinishedFreeRoam;
+        }
+        
+    }
 }
 
 public enum GameState

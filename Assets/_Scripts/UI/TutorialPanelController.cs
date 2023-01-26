@@ -71,7 +71,7 @@ public class TutorialPanelController : MonoBehaviour
                 break;
         }
 
-        PlayerPrefsHandler.SaveData(gameManager);
+        gameManager.SaveData();
         EnableLocomotion();
         DisableTutPanel();
     }
