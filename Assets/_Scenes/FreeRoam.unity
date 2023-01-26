@@ -16478,11 +16478,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549082661384628249, guid: e26f4e4326d3be044b4a52dc673f9c52, type: 3}
       propertyPath: m_FillAmount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6549082661548246610, guid: e26f4e4326d3be044b4a52dc673f9c52, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6549082661548246611, guid: e26f4e4326d3be044b4a52dc673f9c52, type: 3}
       propertyPath: m_ChildScaleWidth
