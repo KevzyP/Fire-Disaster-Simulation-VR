@@ -32,7 +32,7 @@ public class WhiteboardController : MonoBehaviour
         }
     }
 
-    public void LoadImage(int index)
+    private void LoadImage(int index)
     {
         switch (gameManager.currentScenario)
         {
@@ -56,11 +56,5 @@ public class WhiteboardController : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         LoadImage(currentIndex);   
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

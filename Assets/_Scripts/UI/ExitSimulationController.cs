@@ -36,7 +36,7 @@ public class ExitSimulationController : MonoBehaviour
         }
     }
 
-    public IEnumerator ShowExitPanel()
+    private IEnumerator ShowExitPanel()
     {
         isWindowOpen = true;
 
@@ -46,7 +46,7 @@ public class ExitSimulationController : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator HideExitPanel()
+    private IEnumerator HideExitPanel()
     {
         canvasPanel.GetComponent<CanvasGroup>().alpha = 0f;
         canvasPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;

@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int health = 2;
     [SerializeField] private float hitDelayTime;
 
+    [SerializeField] private LocomotionSystem locomotionSystem;
+
     [SerializeField] private InputActionReference leftJoystick;
     [SerializeField] private InputActionReference leftTrigger;
     [SerializeField] private InputActionReference rightTrigger;
@@ -56,6 +58,39 @@ public class PlayerController : MonoBehaviour
         rightTrigger.action.started -= ClickSound;
     }
 
+    public void ToggleLocomotionSystem()
+    {
+        if (locomotionSystem.gameObject.activeInHierarchy)
+        {
+            Debug.Log("Disabling locomotion");
+            locomotionSystem.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Enabling locomotion");
+            locomotionSystem.gameObject.SetActive(true);
+        }
+    }
+
+    public IEnumerator PlayerDeath()
+    {
+        LocomotionSystem locomotion = FindObjectOfType<LocomotionSystem>();
+        locomotion.gameObject.SetActive(false);
+
+        yield return DeathScreen();
+
+        RespawnToOriginalPosition();
+
+        yield return new WaitForSeconds(2);
+
+        yield return DeathScreen();
+
+        locomotion.gameObject.SetActive(true);
+
+        currentHealth = health;
+
+        yield return null;
+    }
 
     public void TakeDamage()
     {
@@ -80,7 +115,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void RespawnToOriginalPosition()
+    private void RespawnToOriginalPosition()
     {
         gameObject.GetComponent<Transform>().position = originalTransformPosition;
         gameObject.GetComponent<Transform>().rotation = originalTransformRotation;
@@ -92,27 +127,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(hitDelayTime);
         Debug.Log("Delay done.");
         isHitDelay = false;
-    }
-   
-    public IEnumerator PlayerDeath()
-    {
-        LocomotionSystem locomotion = FindObjectOfType<LocomotionSystem>();
-        locomotion.gameObject.SetActive(false);
-
-        yield return DeathScreen();
-
-        RespawnToOriginalPosition();
-
-        yield return new WaitForSeconds(2);
-
-        yield return DeathScreen();
-
-        locomotion.gameObject.SetActive(true);
-
-        currentHealth = health;
-
-        yield return null;
-    }
+    }   
 
     private IEnumerator DeathScreen()
     {
@@ -188,8 +203,11 @@ public class PlayerController : MonoBehaviour
 
     private void EnableFootsteps(InputAction.CallbackContext obj)
     {
-        audioSource.clip = footstepsSound;
-        audioSource.Play();
+        if (locomotionSystem.gameObject.activeInHierarchy)
+        {
+            audioSource.clip = footstepsSound;
+            audioSource.Play();
+        }            
     }
 
     private void DisableFootsteps(InputAction.CallbackContext obj)
@@ -205,4 +223,5 @@ public class PlayerController : MonoBehaviour
             audioSource.Play();
         }        
     }   
+
 }

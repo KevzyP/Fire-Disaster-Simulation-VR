@@ -38,11 +38,4 @@ public class Objective : MonoBehaviour
         }
         return false;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    
 }

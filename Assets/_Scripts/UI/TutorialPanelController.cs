@@ -14,8 +14,6 @@ public class TutorialPanelController : MonoBehaviour
 
     private GameManager gameManager;
 
-    private GameObject locomotionSystem;
-
     private int textIndex = 0;
 
 
@@ -28,11 +26,9 @@ public class TutorialPanelController : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.Instance;
-        locomotionSystem = FindObjectOfType<LocomotionSystem>().gameObject;
-        locomotionSystem.gameObject.SetActive(false);
     }
 
-    public void ShowText()
+    private void ShowText()
     {
         tutorialText.text = textList[textIndex];
         indexCountText.text = textIndex+1 + " / " + textList.Count;
@@ -72,17 +68,11 @@ public class TutorialPanelController : MonoBehaviour
         }
 
         gameManager.SaveData();
-        EnableLocomotion();
         DisableTutPanel();
     }
 
-    void DisableTutPanel()
+    private void DisableTutPanel()
     {
         gameObject.SetActive(false);
-    }
-
-    void EnableLocomotion()
-    {
-        locomotionSystem.gameObject.SetActive(true);
     }
 }

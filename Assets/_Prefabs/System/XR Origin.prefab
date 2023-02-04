@@ -1986,7 +1986,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973820597169257370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1176, z: 0}
+  m_LocalPosition: {x: 0, y: 1.117, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2290,6 +2290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   hitDelayTime: 2
+  locomotionSystem: {fileID: 3913807260899365554}
   leftJoystick: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftTrigger: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rightTrigger: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
@@ -2811,6 +2812,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 337050652689558627}
     m_Modifications:
+    - target: {fileID: 812791742426170544, guid: 11b30652bc998164d8524a9b1db11851, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleExitPrompt
+      objectReference: {fileID: 0}
     - target: {fileID: 812791742718684993, guid: 11b30652bc998164d8524a9b1db11851, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2867,6 +2872,14 @@ PrefabInstance:
       propertyPath: leftRayController
       value: 
       objectReference: {fileID: 1973820596825533199}
+    - target: {fileID: 812791743401722395, guid: 11b30652bc998164d8524a9b1db11851, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleExitPrompt
+      objectReference: {fileID: 0}
+    - target: {fileID: 812791743826260828, guid: 11b30652bc998164d8524a9b1db11851, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11b30652bc998164d8524a9b1db11851, type: 3}
 --- !u!1 &3074238508133245656 stripped
@@ -2891,3 +2904,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 812791742802458606, guid: 11b30652bc998164d8524a9b1db11851, type: 3}
   m_PrefabInstance: {fileID: 2445030641524657541}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3074238509241319135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 812791743826260826, guid: 11b30652bc998164d8524a9b1db11851, type: 3}
+  m_PrefabInstance: {fileID: 2445030641524657541}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1133787421
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3074238509241319135}
+  m_Enabled: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

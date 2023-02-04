@@ -33,7 +33,7 @@ public class InformationPanelController : MonoBehaviour
         }
     }
 
-    public IEnumerator ShowInfoPanel()
+    private IEnumerator ShowInfoPanel()
     {
         isRunning = true;
         bgImage.fillAmount = 0;
@@ -62,7 +62,7 @@ public class InformationPanelController : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator HideInfoPanel()
+    private IEnumerator HideInfoPanel()
     {
         isRunning = true;
         bgImage.fillAmount = 1;

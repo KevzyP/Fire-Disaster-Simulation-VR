@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class FlowController : MonoBehaviour
 {
-    private ObjectiveController objectiveController;
     private GameManager gameManager;
+    
+    private PlayerController playerController;
+    private ObjectiveController objectiveController;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.Instance;
         objectiveController = FindObjectOfType<ObjectiveController>();
+        playerController = FindObjectOfType<PlayerController>();
 
         switch (gameManager.State)
         {
@@ -27,32 +30,31 @@ public class FlowController : MonoBehaviour
         }
     }
 
-    public IEnumerator FlowSequenceFreeRoam()
+    private IEnumerator FlowSequenceFreeRoam()
     {
         Debug.Log("Begin FreeRoam Flow Sequence");
+
         TutorialPanelController tutorialPanelController = FindObjectOfType<TutorialPanelController>();
 
-        Debug.Log("Is this tutorial been read?\n" + gameManager.tutFinishedEx);
-        if (gameManager.tutFinishedFreeRoam)
-        {
-            Debug.Log("Closing tutorial as it's been read before.");
-            tutorialPanelController.CloseTutorial();
-        }
+        playerController.ToggleLocomotionSystem();
+
+        yield return new WaitUntil(() => gameManager.tutFinishedFreeRoam == true);
+        tutorialPanelController.CloseTutorial();
+        playerController.ToggleLocomotionSystem();
 
         yield return null;
     }
 
-    public IEnumerator FlowSequenceFireEx()
+    private IEnumerator FlowSequenceFireEx()
     {
         TutorialPanelController tutorialPanelController = FindObjectOfType<TutorialPanelController>();
         FireController fireController = FindObjectOfType<FireController>();
 
-        if (gameManager.tutFinishedEx)
-        {
-            tutorialPanelController.CloseTutorial();
-        }
+        playerController.ToggleLocomotionSystem();
 
         yield return new WaitUntil(() => gameManager.tutFinishedEx == true);
+        tutorialPanelController.CloseTutorial();
+        playerController.ToggleLocomotionSystem();
 
         SetupFireEx();
         Objective fireObjective = objectiveController.objectiveList.Find((x) => x.CompareTag("FireObjective"));
@@ -66,17 +68,16 @@ public class FlowController : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator FlowSequenceEvac()
+    private IEnumerator FlowSequenceEvac()
     {
         TutorialPanelController tutorialPanelController = FindObjectOfType<TutorialPanelController>();
         FireController fireController = FindObjectOfType<FireController>();
 
-        if (gameManager.tutFinishedEvac)
-        {
-            tutorialPanelController.CloseTutorial();
-        }
+        playerController.ToggleLocomotionSystem();
 
         yield return new WaitUntil(() => gameManager.tutFinishedEvac == true);
+        tutorialPanelController.CloseTutorial();
+        playerController.ToggleLocomotionSystem();
 
         SetupFireEvac();
 
@@ -90,7 +91,7 @@ public class FlowController : MonoBehaviour
         yield return null;
     }
 
-    public void SetupFireEx()
+    private void SetupFireEx()
     {
         Debug.Log("Running SetupFireEx Method");
         FireController fireController = FindObjectOfType<FireController>();
@@ -105,7 +106,7 @@ public class FlowController : MonoBehaviour
 
     }
 
-    public void SetupFireEvac()
+    private void SetupFireEvac()
     {
         Debug.Log("Running SetupFireEvac Method");
         FireController fireController = FindObjectOfType<FireController>();

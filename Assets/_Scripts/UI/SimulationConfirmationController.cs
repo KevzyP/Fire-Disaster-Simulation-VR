@@ -47,7 +47,7 @@ public class SimulationConfirmationController : MonoBehaviour
         gameManager.ChangeScene(gameManager.s_FreeRoam);
     }
 
-    void ChangeSimulationTitle()
+    private void ChangeSimulationTitle()
     {
         switch (gameManager.currentScenario)
         {

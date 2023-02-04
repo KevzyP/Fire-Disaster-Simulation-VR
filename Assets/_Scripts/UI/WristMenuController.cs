@@ -17,6 +17,7 @@ public class WristMenuController : MonoBehaviour
     
     private GameObject controllerModel;
     private MenuState currentMenuState;
+    private bool isInExitPrompt = false;
     private bool isShown = false;
 
     private void ToggleWristMenu(InputAction.CallbackContext obj)
@@ -46,16 +47,15 @@ public class WristMenuController : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
     }
 
-    void ShowWristMenu()
+    private void ShowWristMenu()
     {
         ShowWristMenuCanvas();
         controllerModel.SetActive(false);
         leftRayController.enabled = false;
-        currentMenuState = MenuState.Objectives;
         isShown = true;
     }
 
-    void HideWristMenu()
+    private void HideWristMenu()
     {
         HideWristMenuCanvas();
         controllerModel.SetActive(true);
@@ -67,9 +67,12 @@ public class WristMenuController : MonoBehaviour
     {
         if(currentMenuState != MenuState.Objectives)
         {
-            systemPanel.SetActive(false);
-            objectivePanel.SetActive(true);
-            currentMenuState = MenuState.Objectives;
+            if (!isInExitPrompt)
+            {
+                systemPanel.SetActive(false);
+                objectivePanel.SetActive(true);
+                currentMenuState = MenuState.Objectives;
+            }            
         }
     }
 
@@ -77,27 +80,29 @@ public class WristMenuController : MonoBehaviour
     {
         if(currentMenuState != MenuState.System)
         {
-            objectivePanel.SetActive(false);
-            systemPanel.SetActive(true);
-            currentMenuState = MenuState.System;
+            if (!isInExitPrompt)
+            {
+                objectivePanel.SetActive(false);
+                systemPanel.SetActive(true);
+                currentMenuState = MenuState.System;
+            }            
         }
     }
 
-    public void ShowExitPrompt()
+    public void ToggleExitPrompt()
     {
-        if(currentMenuState != MenuState.ExitPrompt)
+        switch (currentMenuState)
         {
-            exitPromptPanel.SetActive(true);
-            currentMenuState = MenuState.ExitPrompt;
-        }
-    }
-
-    public void HideExitPrompt()
-    {
-        if(currentMenuState == MenuState.ExitPrompt)
-        {
-            exitPromptPanel.SetActive(false);
-            currentMenuState = MenuState.System;
+            case MenuState.ExitPrompt:
+                exitPromptPanel.SetActive(false);
+                currentMenuState = MenuState.System;
+                isInExitPrompt = false;
+                break;
+            case MenuState.System:
+                exitPromptPanel.SetActive(true);
+                currentMenuState = MenuState.ExitPrompt;
+                isInExitPrompt = true;
+                break;
         }
     }
 
@@ -122,6 +127,7 @@ public class WristMenuController : MonoBehaviour
     {
         HideWristMenuCanvas();
         controllerModel = GameObject.Find("[LeftHand Direct Controller] Model Parent");
+        currentMenuState = MenuState.Objectives;
     }
 
     public enum MenuState

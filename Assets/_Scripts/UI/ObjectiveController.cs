@@ -8,8 +8,8 @@ public class ObjectiveController : MonoBehaviour
     [SerializeField] private Objective objectivePrefab;
     [SerializeField] private Transform objectiveParent;
     [SerializeField] public List<Objective> objectiveList;
-    [TextArea (5, 10)]
-    public List<string> fireEvacTexts;
+    [SerializeField] [TextArea (5, 10)]
+    private List<string> fireEvacTexts;
 
     private string firesRemainingText;
     private int firesRemainingNumber;

@@ -38,7 +38,7 @@ public class ScenarioHandler : MonoBehaviour
             StartCoroutine(HideScenarioWindow());
         }
     }
-    public IEnumerator ShowScenarioWindow()
+    private IEnumerator ShowScenarioWindow()
     {
         Debug.Log("Running show scenario window");
         isRunning = true;
@@ -72,7 +72,7 @@ public class ScenarioHandler : MonoBehaviour
 
         yield return null;
     }
-    public IEnumerator HideScenarioWindow()
+    private IEnumerator HideScenarioWindow()
     {
         isRunning = true;
         scenarioBG.fillAmount = 1;

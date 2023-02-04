@@ -8,6 +8,14 @@ public class FireController : MonoBehaviour
     public List<AudioSource> fireSounds;
     private ObjectiveController objectiveController;
 
+    private void Start()
+    {
+        objectiveController = FindObjectOfType<ObjectiveController>();
+        fires.AddRange(gameObject.GetComponentsInChildren<Fires>());
+
+        StartCoroutine(DeactivateFires());
+    }
+
     public void UpdateFireStatus()
     {
         objectiveController.UpdateFireObjective();
@@ -33,15 +41,6 @@ public class FireController : MonoBehaviour
 
         return currentFiresExtinguished;
     }
-
-    private void Start()
-    {
-        objectiveController = FindObjectOfType<ObjectiveController>();
-        fires.AddRange(gameObject.GetComponentsInChildren<Fires>());
-
-        StartCoroutine(DeactivateFires());
-    }
-
     public void ActivateFires()
     {
         for (int i = 0; i < fires.Count; i++)
@@ -60,7 +59,7 @@ public class FireController : MonoBehaviour
         }
     }
 
-    public IEnumerator DeactivateFires()
+    private IEnumerator DeactivateFires()
     {
         foreach (Fires fireObject in fires)
         {

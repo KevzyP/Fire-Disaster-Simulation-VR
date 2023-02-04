@@ -13,10 +13,6 @@ public class Fires : MonoBehaviour
     private float[] currentEmission;
     public bool isExtinguished = false;
 
-    private void Update()
-    {
-    }
-
     // Use this for initialization
     void Start()
     {
@@ -49,7 +45,7 @@ public class Fires : MonoBehaviour
         ChangeFireIntensity();
     }
 
-    public void ChangeFireIntensity()
+    private void ChangeFireIntensity()
     {
         for (int i = 0; i < fireParticles.Count; i++)
         {
@@ -61,6 +57,7 @@ public class Fires : MonoBehaviour
             if (emissionModule.rateOverTime.constant <= 0)
             {
                 isExtinguished = true;
+                gameObject.GetComponent<SphereCollider>().enabled = false;
             }
         }
 
